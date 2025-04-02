@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>एवरग्रीन फैमिली हेल्थ क्लब</title>
+    <!-- External CSS resources -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #388E3C;
+            --accent-color: #FF9800;
+            --light-color: #f8f8f8;
+            --dark-color: #333;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 70px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .lang-selector {
+            position: relative;
+            margin-right: 25px;
+        }
+        
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dark-color);
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .lang-btn:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .lang-btn i {
+            margin-left: 5px;
+        }
+        
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            width: 150px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .lang-dropdown.show {
+            display: block;
+        }
+        
+        .lang-option {
+            padding: 10px 15px;
+            display: block;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+        
+        .lang-option:hover {
+            background-color: #f0f0f0;
+            color: var(--primary-color);
+        }
+        
+        .lang-option.active {
+            background-color: #e8f5e9;
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/random/1200x600/?yoga,fitness') center/cover no-repeat;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--accent-color);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 0;
+            background-color: var(--primary-color);
+            color: white;
+            position: relative;
+        }
+        
+        .how-it-works-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .how-it-works-text {
+            flex: 1;
+        }
+        
+        .how-it-works h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .how-it-works h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .how-it-works p {
+            margin-bottom: 25px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .steps-container {
+            flex: 1;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateX(10px);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        /* .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/bigimg.jpg') center/cover no-repeat;
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden; }*/
+
+    .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/nav.jpg') center/cover no-repeat;
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+        
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            width: 2px;
+            height: calc(100% - 10px);
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .step-content {
+            padding-top: 5px;
+        }
+        
+        .step-content h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .step-content p {
+            font-size: 16px;
+            margin-bottom: 0;
+            opacity: 0.8;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--light-color);
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title {
+            margin-bottom: 20px;
+            font-size: 36px;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .section-subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+        
+        .about p {
+            max-width: 800px;
+            margin: 0 auto 25px;
+            font-size: 18px;
+        }
+        
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .feature-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .feature-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .feature-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: var(--dark-color);
+        }
+        
+        .feature-card p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 0;
+        }
+        
+        /* Classes Section */
+        .classes {
+            padding: 80px 0;
+            background-color: white;
+            position: relative;
+        }
+        
+        .classes-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .classes-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .class-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 280px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .class-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .class-icon {
+            height: 80px;
+            width: 80px;
+            margin: 20px auto;
+            background-color: #eef7ef;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .class-card:hover .class-icon {
+            transform: scale(1.1);
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .class-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .class-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: var(--dark-color);
+        }
+        
+        .class-card p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Why Choose Us Section */
+        .why-choose {
+            padding: 80px 0;
+            background-color: var(--light-color);
+            text-align: center;
+        }
+        
+        .reasons-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .reason-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 250px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .reason-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .reason-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .reason-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background-color: #eef7ef;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #673AB7;
+            font-size: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .reason-card:hover .reason-icon {
+            transform: rotateY(180deg);
+        }
+        
+        .reason-card h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: var(--dark-color);
+        }
+        
+        .reason-card p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Community Section */
+        .community {
+            padding: 80px 0;
+            background-color: white;
+            text-align: center;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+        }
+        
+        .community-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .community p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--light-color);
+            text-align: center;
+            position: relative;
+        }
+        
+        .testimonials p {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 18px;
+        }
+        
+        .testimonial-slider {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 15px;
+        }
+        
+        .testimonial-card {
+            width: 350px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .testimonial-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .weight-change {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .testimonial-disclaimer {
+            font-size: 12px;
+            font-style: italic;
+            color: #999;
+            margin-top: 30px;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 2;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .slider-nav:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .slider-prev {
+            left: 10px;
+        }
+        
+        .slider-next {
+            right: 10px;
+        }
+        
+        .slider-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background-color: var(--primary-color);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            padding: 80px 0;
+            background-color: white;
+            position: relative;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 10px;
+            background-color: var(--primary-color);
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            color: var(--dark-color);
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+        
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-group input:focus, 
+        .form-group textarea:focus, 
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+            outline: none;
+        }
+        
+        .form-submit {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .animated-btn {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo img {
+            height: 100px;
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-logo img:hover {
+            transform: scale(1.1);
+        }
+        
+        .contact-info {
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info p:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            background-color: var(--primary-color);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .how-it-works-content {
+                flex-direction: column;
+            }
+            
+            .testimonial-card {
+                width: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .slider-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .testimonial-card {
+                width: 100%;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-left {
+            transform: translateX(-30px);
+        }
+        
+        .reveal-right {
+            transform: translateX(30px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="nav-logo.webp" alt="">
+            </div>
+            <div class="nav-menu">
+                <div class="lang-selector">
+                    <button class="lang-btn" id="langBtn">
+                        <span id="currentLang">हिंदी</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <a href="#" class="lang-option active" data-lang="hi">हिंदी</a>
+                        <a href="#" class="lang-option" data-lang="en">English</a>
+                        <a href="#" class="lang-option" data-lang="mr">मराठी</a>
+                    </div>
+                </div>
+                <a href="#contact" class="btn">संपर्क करें</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>स्वास्थ्यपूर्ण जीवनशैली की खोज - एक कदम एक बार में।</h1>
+                <p>व्यक्तिगत पोषण योजनाओं, एचआई-पार्टी उपकरणों, और विशेषज्ञ मार्गदर्शन के साथ संबंधित जानकारी प्राप्त करें।</p>
+                <a href="#contact" class="btn hero-btn">आज ही मुफ्त में शुरू करें</a>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10,000</div>
+                        <div class="stat-label">प्रभावित जीवन</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">व्यक्तिगत योजनाएँ विकसित</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">ग्राहक संतोष दर</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="how-it-works-content">
+                <div class="how-it-works-text">
+                    <h2>यह कैसे काम करता है</h2>
+                    <p>देखें कि हम आपकी समस्या को कैसे समझते हैं और आपके लिए सबसे उपयुक्त योजना बनाते हैं।</p>
+                    <a href="#contact" class="btn">आज ही मुफ्त में शुरू करें</a>
+                </div>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>साइन अप करें और व्यक्तिगत मूल्यांकन प्राप्त करें</h3>
+                            <p>हमें अपने स्वास्थ्य लक्ष्यों और चुनौतियों के बारे में बताएं।</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>अपनी व्यक्तिगत स्वास्थ्य योजना प्राप्त करें</h3>
+                            <p>हमारे विशेषज्ञ आपके लिए एक कस्टम स्वास्थ्य और पोषण योजना तैयार करेंगे।</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>अपनी स्वास्थ्य यात्रा शुरू करें</h3>
+                            <p>अपनी योजना का पालन करें और हमारे निरंतर समर्थन के साथ प्रगति देखें।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">हमारे बारे में</h2>
+            <p class="section-subtitle">एवरग्रीन फैमिली हेल्थ क्लब - स्वस्थ जीवनशैली के लिए आपका साथी</p>
+            <p>एवरग्रीन फैमिली हेल्थ क्लब एक ऐसा स्थान है जहां हर उम्र, आकार और फिटनेस स्तर के लोगों का स्वागत है। हम मानते हैं कि स्वस्थ जीवन जीने के लिए महंगे जिम सदस्यताओं या कठिन आहार प्रतिबंधों की आवश्यकता नहीं है। एवरग्रीन में, हम आपको ऐसे उपकरण और समर्थन प्रदान करते हैं जो आपको अपने स्वास्थ्य यात्रा में मदद करेंगे।</p>
+            <p>हमारी टीम प्रमाणित पोषण विशेषज्ञों, फिटनेस प्रशिक्षकों और स्वास्थ्य पेशेवरों से बनी है जो आपके स्वास्थ्य लक्ष्यों को प्राप्त करने में मदद करने के लिए समर्पित हैं।</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <img src="Images/care.jpg" alt="पोषण परामर्श">
+                    <div class="feature-content">
+                        <h3>व्यक्तिगत पोषण परामर्श</h3>
+                        <p>हमारे प्रमाणित पोषण विशेषज्ञ आपके स्वास्थ्य और पोषण लक्ष्यों के लिए एक व्यक्तिगत योजना तैयार करेंगे।</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <img src="Images/group classes.jpg" alt="फिटनेस कक्षाएं">
+                    <div class="feature-content">
+                        <h3>समूह फिटनेस कक्षाएं</h3>
+                        <p>हमारी विविध फिटनेस कक्षाएं आपको प्रेरित और उत्साहित रखेंगी। योग से लेकर ज़ुम्बा तक, हम सभी के लिए कुछ न कुछ पेश करते हैं।</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <img src="Images/SupportiveCommunity.jpg" alt="Supportive Community">
+                    <div class="feature-content">
+                        <h3>सहायक समुदाय</h3>
+                        <p>एवरग्रीन में, आप एक ऐसे समुदाय का हिस्सा बन जाते हैं जो आपको प्रोत्साहित करता है और आपकी स्वास्थ्य यात्रा में आपका समर्थन करता है।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section class="classes" id="classes">
+        <div class="container">
+            <div class="classes-content">
+                <h2 class="section-title">हमारी सेवाएं</h2>
+                <p class="section-subtitle">विशेषज्ञों द्वारा प्रदान की जाने वाली विविध सेवाएं</p>
+                <p>हम सभी उम्र और फिटनेस स्तरों के लिए विभिन्न प्रकार की स्वास्थ्य और फिटनेस सेवाएं प्रदान करते हैं। चाहे आप अपना वजन घटाना चाहते हैं, मांसपेशियां बढ़ाना चाहते हैं, या बस स्वस्थ जीवनशैली अपनाना चाहते हैं, हमारे पास आपके लिए वह सब है जिसकी आपको आवश्यकता है।</p>
+                
+                <div class="classes-grid">
+                    <div class="class-card">
+                        <div class="class-icon">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <div class="class-content">
+                            <h3>पोषण परामर्श</h3>
+                            <p>हमारे प्रमाणित पोषण विशेषज्ञ आपके स्वास्थ्य और पोषण लक्ष्यों के लिए एक व्यक्तिगत योजना तैयार करेंगे।</p>
+                        </div>
+                    </div>
+                    <div class="class-card">
+                        <div class="class-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="class-content">
+                            <h3>व्यक्तिगत प्रशिक्षण</h3>
+                            <p>हमारे अनुभवी प्रशिक्षक आपके साथ व्यक्तिगत रूप से काम करेंगे ताकि आप अपने फिटनेस लक्ष्यों को प्राप्त कर सकें।</p>
+                        </div>
+                    </div>
+                    <div class="class-card">
+                        <div class="class-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="class-content">
+                            <h3>कार्डियो वर्कआउट</h3>
+                            <p>हमारे कार्डियो वर्कआउट आपका हृदय स्वास्थ्य सुधारेंगे और वजन घटाने में मदद करेंगे।</p>
+                        </div>
+                    </div>
+                    <div class="class-card">
+                        <div class="class-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <div class="class-content">
+                            <h3>योगा और ध्यान</h3>
+                            <p>हमारी योग और ध्यान कक्षाएं आपको शांत और केंद्रित रहने में मदद करेंगी।</p>
+                        </div>
+                    </div>
+                    <div class="class-card">
+                        <div class="class-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="class-content">
+                            <h3>स्वस्थ खाना पकाने की कक्षाएं</h3>
+                            <p>अपने स्वयं के स्वस्थ भोजन को तैयार करना सीखें जो स्वादिष्ट और पौष्टिक दोनों हों।</p>
+                        </div>
+                    </div>
+                    <div class="class-card">
+                        <div class="class-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="class-content">
+                            <h3>समूह कक्षाएं</h3>
+                            <p>समान विचारधारा वाले लोगों के समुदाय के साथ अपने फिटनेस लक्ष्यों पर काम करें।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose" id="why-choose">
+        <div class="container">
+            <h2 class="section-title">हमें क्यों चुनें</h2>
+            <p class="section-subtitle">एवरग्रीन में, हम आपके स्वास्थ्य को प्राथमिकता देते हैं</p>
+            <p>हम आपके स्वास्थ्य और कल्याण के प्रति प्रतिबद्ध हैं। हम आपको वह सब कुछ प्रदान करने का वादा करते हैं जिसकी आपको अपने स्वास्थ्य लक्ष्यों को प्राप्त करने के लिए आवश्यकता है।</p>
+            
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>विशेषज्ञ टीम</h3>
+                    <p>हमारी टीम प्रमाणित पोषण विशेषज्ञों और फिटनेस प्रशिक्षकों से बनी है जो आपको अपने लक्ष्यों को प्राप्त करने में मदद करेंगे।</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>व्यक्तिगत प्लान</h3>
+                    <p>हम आपके लिए व्यक्तिगत स्वास्थ्य और पोषण योजनाएं बनाते हैं जो आपके विशिष्ट लक्ष्यों और जरूरतों के अनुरूप होती हैं।</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>समर्थन समुदाय</h3>
+                    <p>आप एक ऐसे समुदाय का हिस्सा बन जाते हैं जो आपको प्रोत्साहित करता है और आपकी स्वास्थ्य यात्रा में आपका समर्थन करता है।</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>प्रगति ट्रैकिंग</h3>
+                    <p>हम आपकी प्रगति को ट्रैक करते हैं और आपको प्रतिक्रिया प्रदान करते हैं ताकि आप अपने लक्ष्यों को प्राप्त कर सकें।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community" id="community">
+        <div class="container">
+            <div class="community-content">
+                <h2 class="section-title">हमारा समुदाय</h2>
+                <p class="section-subtitle">एक परिवार जो स्वस्थ जीवन जीता है</p>
+                <p>एवरग्रीन फैमिली हेल्थ क्लब में, हम मानते हैं कि स्वास्थ्य सिर्फ शारीरिक फिटनेस के बारे में नहीं है। यह एक ऐसे समुदाय से जुड़ने के बारे में भी है जो आपको प्रोत्साहित करता है और आपकी स्वास्थ्य यात्रा में आपका समर्थन करता है।</p>
+                <p>आज ही हमारे समुदाय से जुड़ें और हमारे नियमित समूह सत्रों, सामाजिक कार्यक्रमों और अनूठे स्वास्थ्य चुनौतियों का हिस्सा बनें।</p>
+                <a href="#contact" class="btn">आज ही शामिल हों</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">हमारे ग्राहकों की कहानियां</h2>
+            <p class="section-subtitle">हमारे ग्राहकों ने क्या कहा है</p>
+            <p>हमारे ग्राहकों ने हमारी सेवाओं के साथ अद्भुत परिणाम देखे हैं। यहां कुछ प्रेरणादायक कहानियां हैं जिन्हें हम आपके साथ साझा करना चाहते हैं।</p>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <img src="Images/img1.jpg" alt="प्रिया शर्मा" class="testimonial-image">
+                            <div class="testimonial-content">
+                                <div class="weight-change">- 15 किलो</div>
+                                <h3>प्रिया शर्मा</h3>
+                                <p>"एवरग्रीन फैमिली हेल्थ क्लब में शामिल होना मेरे जीवन का सबसे अच्छा निर्णय था। मैंने न केवल वजन कम किया, बल्कि एक स्वस्थ जीवनशैली भी अपनाई है जो अब मेरी आदत बन गई है।"</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="Images/img2.jpg" alt="राजेश पटेल" class="testimonial-image">
+                            <div class="testimonial-content">
+                                <div class="weight-change">+ 10 किलो मांसपेशियां</div>
+                                <h3>राजेश पटेल</h3>
+                                <p>"एवरग्रीन के व्यक्तिगत प्रशिक्षकों ने मुझे अपने फिटनेस लक्ष्यों को प्राप्त करने में मदद की। उनका समर्थन और मार्गदर्शन अमूल्य रहा है।"</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <img src="Images/img3.jpg" alt="अनिता खन्ना" class="testimonial-image">
+                            <div class="testimonial-content">
+                                <div class="weight-change">बेहतर स्वास्थ्य</div>
+                                <h3>अनिता खन्ना</h3>
+                                <p>"एवरग्रीन के पोषण विशेषज्ञों ने मुझे अपने भोजन में स्वस्थ विकल्प चुनना सिखाया। मैं अधिक ऊर्जावान महसूस करती हूं और मेरा स्वास्थ्य पहले से कहीं बेहतर है।"</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="Images/img4.jpg" alt="सुरेश वर्मा" class="testimonial-image">
+                            <div class="testimonial-content">
+                                <div class="weight-change">हृदय स्वास्थ्य में सुधार</div>
+                                <h3>सुरेश वर्मा</h3>
+                                <p>"अपने डॉक्टर की सलाह पर मैं एवरग्रीन में शामिल हुआ। उनके व्यक्तिगत कार्यक्रम ने मेरे हृदय स्वास्थ्य में उल्लेखनीय सुधार किया है।"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-nav slider-prev" id="sliderPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="slider-nav slider-next" id="sliderNext">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                
+                <div class="slider-indicators" id="sliderIndicators">
+                    <div class="slider-dot active" data-slide="0"></div>
+                    <div class="slider-dot" data-slide="1"></div>
+                </div>
+                
+                <div class="testimonial-disclaimer">
+                    नोट: परिणाम व्यक्ति के अनुसार भिन्न हो सकते हैं। एक संतुलित आहार और नियमित व्यायाम के साथ इष्टतम परिणामों के लिए।
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form" id="contact">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="form-title">हमसे संपर्क करें</h2>
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">नाम</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">ईमेल</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">फोन नंबर</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">सेवा</label>
+                            <select id="service" name="service" required>
+                                <option value="">सेवा चुनें</option>
+                                <option value="nutrition">पोषण परामर्श</option>
+                                <option value="personal-training">व्यक्तिगत प्रशिक्षण</option>
+                                <option value="group-classes">समूह कक्षाएं</option>
+                                <option value="yoga">योग और ध्यान</option>
+                                <option value="cooking">खाना पकाने की कक्षाएं</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="message">संदेश</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn animated-btn">संपर्क करें</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="https://source.unsplash.com/random/200x70/?logo,health" alt="एवरग्रीन फैमिली हेल्थ क्लब लोगो">
+            </div>
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt"></i> पता: 123 स्वास्थ्य मार्ग, नई दिल्ली, भारत</p>
+                <p><i class="fas fa-phone"></i> फोन: +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> ईमेल: info@evergreenfamilyhealth.com</p>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100052252716144" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <!-- <a href="#" class="social-link"><i class="fab fa-twitter"></i></a> -->
+                <a href="https://www.instagram.com/shrutika.wellness.coach?igsh=M3c5ejlvc211eDFk" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/918788866190?text=नमस्ते!%20एवरग्रीन%20फैमिली%20हेल्थ%20क्लब%20में%20आपका%20स्वागत%20है!" 
+                target="_blank" class="social-link">
+                 <i class="fab fa-whatsapp"></i>
+             </a>
+                   
+            </div>
+            <div class="copyright">
+                &copy; 2024 एवरग्रीन फैमिली हेल्थ क्लब. सर्वाधिकार सुरक्षित।
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const whatsappNumber = '918788866190';
+    const whatsappMessage = 'नमस्ते! एवरग्रीन फैमिली हेल्थ क्लब में आपका स्वागत है! 🌿💪 मैं आपकी निम्न विषयों में मदद कर सकती हूँ: - व्यक्तिगत फिटनेस योजना - पोषण परामर्श - समूह फिटनेस कक्षाएँ - वजन प्रबंधन - स्वास्थ्य मार्गदर्शन क्या आप अपने स्वास्थ्य लक्ष्यों के बारे में जानना चाहेंगे? मैं आपकी व्यक्तिगत स्वास्थ्य यात्रा में सहायता करने के लिए तत्पर हूँ! आइए एक स्वस्थ जीवन की ओर बढ़ें! 🏋️‍♀️🥗';
+
+    const whatsappLink = `https://wa.me/${918788866190}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    const whatsappBtn = document.querySelector('.social-link .fa-whatsapp');
+    if (whatsappBtn) {
+        whatsappBtn.parentElement.href = whatsappLink;
+    }
+});
+        // Language Translations
+        const translations = {
+            'hi': {
+                'contact-btn': 'संपर्क करें',
+                'hero-title': 'स्वास्थ्यपूर्ण जीवनशैली की खोज - एक कदम एक बार में।',
+                'hero-desc': 'व्यक्तिगत पोषण योजनाओं, एचआई-पार्टी उपकरणों, और विशेषज्ञ मार्गदर्शन के साथ संबंधित जानकारी प्राप्त करें।',
+                'start-free': 'आज ही मुफ्त में शुरू करें',
+                'stat-lives': 'प्रभावित जीवन',
+                'stat-plans': 'व्यक्तिगत योजनाएँ विकसित',
+                'stat-satisfaction': 'ग्राहक संतोष दर',
+                'how-works': 'यह कैसे काम करता है',
+                'how-works-desc': 'देखें कि हम आपकी समस्या को कैसे समझते हैं और आपके लिए सबसे उपयुक्त योजना बनाते हैं।',
+                'step1-title': 'साइन अप करें और व्यक्तिगत मूल्यांकन प्राप्त करें',
+                'step1-desc': 'हमें अपने स्वास्थ्य लक्ष्यों और चुनौतियों के बारे में बताएं।',
+                'step2-title': 'अपनी व्यक्तिगत स्वास्थ्य योजना प्राप्त करें',
+                'step2-desc': 'हमारे विशेषज्ञ आपके लिए एक कस्टम स्वास्थ्य और पोषण योजना तैयार करेंगे।',
+                'step3-title': 'अपनी स्वास्थ्य यात्रा शुरू करें',
+                'step3-desc': 'अपनी योजना का पालन करें और हमारे निरंतर समर्थन के साथ प्रगति देखें।',
+                'about': 'हमारे बारे में',
+                'about-subtitle': 'एवरग्रीन फैमिली हेल्थ क्लब - स्वस्थ जीवनशैली के लिए आपका साथी',
+                'about-desc1': 'एवरग्रीन फैमिली हेल्थ क्लब एक ऐसा स्थान है जहां हर उम्र, आकार और फिटनेस स्तर के लोगों का स्वागत है। हम मानते हैं कि स्वस्थ जीवन जीने के लिए महंगे जिम सदस्यताओं या कठिन आहार प्रतिबंधों की आवश्यकता नहीं है। एवरग्रीन में, हम आपको ऐसे उपकरण और समर्थन प्रदान करते हैं जो आपको अपने स्वास्थ्य यात्रा में मदद करेंगे।',
+                'about-desc2': 'हमारी टीम प्रमाणित पोषण विशेषज्ञों, फिटनेस प्रशिक्षकों और स्वास्थ्य पेशेवरों से बनी है जो आपके स्वास्थ्य लक्ष्यों को प्राप्त करने में मदद करने के लिए समर्पित हैं।',
+                'feature1-title': 'व्यक्तिगत पोषण परामर्श',
+                'feature1-desc': 'हमारे प्रमाणित पोषण विशेषज्ञ आपके स्वास्थ्य और पोषण लक्ष्यों के लिए एक व्यक्तिगत योजना तैयार करेंगे।',
+                'feature2-title': 'समूह फिटनेस कक्षाएं',
+                'feature2-desc': 'हमारी विविध फिटनेस कक्षाएं आपको प्रेरित और उत्साहित रखेंगी। योग से लेकर ज़ुम्बा तक, हम सभी के लिए कुछ न कुछ पेश करते हैं।',
+                'feature3-title': 'सहायक समुदाय',
+                'feature3-desc': 'एवरग्रीन में, आप एक ऐसे समुदाय का हिस्सा बन जाते हैं जो आपको प्रोत्साहित करता है और आपकी स्वास्थ्य यात्रा में आपका समर्थन करता है।',
+                'services': 'हमारी सेवाएं',
+                'services-subtitle': 'विशेषज्ञों द्वारा प्रदान की जाने वाली विविध सेवाएं',
+                'services-desc': 'हम सभी उम्र और फिटनेस स्तरों के लिए विभिन्न प्रकार की स्वास्थ्य और फिटनेस सेवाएं प्रदान करते हैं। चाहे आप अपना वजन घटाना चाहते हैं, मांसपेशियां बढ़ाना चाहते हैं, या बस स्वस्थ जीवनशैली अपनाना चाहते हैं, हमारे पास आपके लिए वह सब है जिसकी आपको आवश्यकता है।',
+                // Add more Hindi translations as needed
+            },
+            'en': {
+                'contact-btn': 'Contact Us',
+                'hero-title': 'Discover a Healthier Lifestyle - One Step at a Time.',
+                'hero-desc': 'Get personalized nutrition plans, HI-PARTY equipment, and expert guidance.',
+                'start-free': 'Start Free Today',
+                'stat-lives': 'Lives Impacted',
+                'stat-plans': 'Personalized Plans Developed',
+                'stat-satisfaction': 'Client Satisfaction Rate',
+                'how-works': 'How It Works',
+                'how-works-desc': 'See how we understand your problem and create the most suitable plan for you.',
+                'step1-title': 'Sign Up and Get a Personal Assessment',
+                'step1-desc': 'Tell us about your health goals and challenges.',
+                'step2-title': 'Receive Your Personalized Health Plan',
+                'step2-desc': 'Our experts will create a custom health and nutrition plan for you.',
+                'step3-title': 'Start Your Health Journey',
+                'step3-desc': 'Follow your plan and see progress with our continuous support.',
+                'about': 'About Us',
+                'about-subtitle': 'Evergreen Family Health Club - Your Partner for a Healthy Lifestyle',
+                'about-desc1': 'Evergreen Family Health Club is a place where people of all ages, shapes, and fitness levels are welcome. We believe that living a healthy life doesn\'t require expensive gym memberships or strict diet restrictions. At Evergreen, we provide you with tools and support that will help you on your health journey.',
+                'about-desc2': 'Our team consists of certified nutrition experts, fitness trainers, and health professionals dedicated to helping you achieve your health goals.',
+                'feature1-title': 'Personalized Nutrition Counseling',
+                'feature1-desc': 'Our certified nutrition experts will create a personalized plan for your health and nutrition goals.',
+                'feature2-title': 'Group Fitness Classes',
+                'feature2-desc': 'Our diverse fitness classes will keep you motivated and excited. From yoga to zumba, we offer something for everyone.',
+                'feature3-title': 'Supportive Community',
+                'feature3-desc': 'At Evergreen, you become part of a community that encourages you and supports you on your health journey.',
+                'services': 'Our Services',
+                'services-subtitle': 'Diverse Services Provided by Experts',
+                'services-desc': 'We provide various health and fitness services for all ages and fitness levels. Whether you want to lose weight, build muscle, or just adopt a healthy lifestyle, we have everything you need.',
+                // Add more English translations as needed
+            },
+            'mr': {
+                'contact-btn': 'संपर्क करा',
+                'hero-title': 'निरोगी जीवनशैली शोधा - एक वेळी एक पाऊल.',
+                'hero-desc': 'वैयक्तिक पोषण योजना, एचआय-पार्टी उपकरणे आणि तज्ञ मार्गदर्शन मिळवा.',
+                'start-free': 'आजच मोफत सुरू करा',
+                'stat-lives': 'प्रभावित जीवने',
+                'stat-plans': 'वैयक्तिक योजना विकसित केल्या',
+                'stat-satisfaction': 'ग्राहक समाधान दर',
+                'how-works': 'हे कसे कार्य करते',
+                'how-works-desc': 'आम्ही तुमची समस्या कशी समजतो आणि तुमच्यासाठी सर्वात योग्य योजना कशी तयार करतो ते पहा.',
+                'step1-title': 'साइन अप करा आणि वैयक्तिक मूल्यांकन मिळवा',
+                'step1-desc': 'आम्हाला तुमच्या आरोग्य उद्दिष्टांबद्दल आणि आव्हानांबद्दल सांगा.',
+                'step2-title': 'तुमची वैयक्तिक आरोग्य योजना प्राप्त करा',
+                'step2-desc': 'आमचे तज्ञ तुमच्यासाठी सानुकूल आरोग्य आणि पोषण योजना तयार करतील.',
+                'step3-title': 'तुमची आरोग्य यात्रा सुरू करा',
+                'step3-desc': 'तुमच्या योजनेचे पालन करा आणि आमच्या सतत समर्थनासह प्रगती पहा.',
+                'about': 'आमच्याबद्दल',
+                'about-subtitle': 'एवरग्रीन फॅमिली हेल्थ क्लब - निरोगी जीवनशैलीसाठी तुमचा भागीदार',
+                'about-desc1': 'एवरग्रीन फॅमिली हेल्थ क्लब हे एक असे ठिकाण आहे जिथे सर्व वयोगट, आकार आणि फिटनेस पातळीचे लोकांचे स्वागत आहे. आम्ही मानतो की निरोगी जीवन जगण्यासाठी महागड्या जिम सदस्यत्व किंवा कठोर आहार निर्बंधांची आवश्यकता नाही. एवरग्रीन येथे, आम्ही तुम्हाला असे साधने आणि समर्थन प्रदान करतो जे तुम्हाला तुमच्या आरोग्य प्रवासात मदत करतील.',
+                'about-desc2': 'आमची टीम प्रमाणित पोषण तज्ञ, फिटनेस प्रशिक्षक आणि आरोग्य व्यावसायिकांनी बनलेली आहे जे तुम्हाला तुमची आरोग्य उद्दिष्टे साध्य करण्यात मदत करण्यासाठी समर्पित आहेत.',
+                'feature1-title': 'वैयक्तिक पोषण सल्ला',
+                'feature1-desc': 'आमचे प्रमाणित पोषण तज्ञ तुमच्या आरोग्य आणि पोषण उद्दिष्टांसाठी वैयक्तिक योजना तयार करतील.',
+                'feature2-title': 'समूह फिटनेस वर्ग',
+                'feature2-desc': 'आमचे विविध फिटनेस वर्ग तुम्हाला प्रेरित आणि उत्साहित ठेवतील. योगापासून झुम्बापर्यंत, आम्ही प्रत्येकासाठी काहीतरी देतो.',
+                'feature3-title': 'समर्थन समुदाय',
+                'feature3-desc': 'एवरग्रीन मध्ये, तुम्ही अशा समुदायाचा भाग बनता जो तुम्हाला प्रोत्साहित करतो आणि तुमच्या आरोग्य प्रवासात तुमचे समर्थन करतो.',
+                'services': 'आमच्या सेवा',
+                'services-subtitle': 'तज्ञांद्वारे प्रदान केलेल्या विविध सेवा',
+                'services-desc': 'आम्ही सर्व वय आणि फिटनेस पातळ्यांसाठी विविध आरोग्य आणि फिटनेस सेवा प्रदान करतो. तुम्हाला वजन कमी करायचे असो, स्नायू वाढवायचे असो किंवा फक्त निरोगी जीवनशैली स्वीकारायची असो, तुम्हाला आवश्यक असलेले सर्व काही आमच्याकडे आहे.',
+                // Add more Marathi translations as needed
+            }
+        };
+        
+        // Language Selector
+        const langBtn = document.getElementById('langBtn');
+        const langDropdown = document.getElementById('langDropdown');
+        const langOptions = document.querySelectorAll('.lang-option');
+        const currentLang = document.getElementById('currentLang');
+        
+        langBtn.addEventListener('click', () => {
+            langDropdown.classList.toggle('show');
+        });
+        
+        // Function to translate the website
+        function translateWebsite(lang) {
+            // Set data attributes for all elements that need translation
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // For elements that need HTML content translated
+            document.querySelectorAll('[data-translate-html]').forEach(element => {
+                const key = element.getAttribute('data-translate-html');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+        }
+        
+        langOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = option.getAttribute('data-lang');
+                currentLang.textContent = option.textContent;
+                
+                langOptions.forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                
+                option.classList.add('active');
+                langDropdown.classList.remove('show');
+                
+                // Translate the website
+                translateWebsite(lang);
+            });
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+                langDropdown.classList.remove('show');
+            }
+        });
+        
+        // Add data-translate attributes to the elements on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header
+            document.querySelector('.btn').setAttribute('data-translate', 'contact-btn');
+            
+            // Hero section
+            document.querySelector('.hero h1').setAttribute('data-translate', 'hero-title');
+            document.querySelector('.hero p').setAttribute('data-translate', 'hero-desc');
+            document.querySelector('.hero-btn').setAttribute('data-translate', 'start-free');
+            document.querySelectorAll('.stat-label')[0].setAttribute('data-translate', 'stat-lives');
+            document.querySelectorAll('.stat-label')[1].setAttribute('data-translate', 'stat-plans');
+            document.querySelectorAll('.stat-label')[2].setAttribute('data-translate', 'stat-satisfaction');
+            
+            // How it works section
+            document.querySelector('.how-it-works h2').setAttribute('data-translate', 'how-works');
+            document.querySelector('.how-it-works p').setAttribute('data-translate', 'how-works-desc');
+            document.querySelector('.how-it-works .btn').setAttribute('data-translate', 'start-free');
+            
+            // Steps
+            document.querySelectorAll('.step-content h3')[0].setAttribute('data-translate', 'step1-title');
+            document.querySelectorAll('.step-content p')[0].setAttribute('data-translate', 'step1-desc');
+            document.querySelectorAll('.step-content h3')[1].setAttribute('data-translate', 'step2-title');
+            document.querySelectorAll('.step-content p')[1].setAttribute('data-translate', 'step2-desc');
+            document.querySelectorAll('.step-content h3')[2].setAttribute('data-translate', 'step3-title');
+            document.querySelectorAll('.step-content p')[2].setAttribute('data-translate', 'step3-desc');
+            
+            // About section
+            document.querySelector('#about .section-title').setAttribute('data-translate', 'about');
+            document.querySelector('#about .section-subtitle').setAttribute('data-translate', 'about-subtitle');
+            document.querySelectorAll('#about p')[0].setAttribute('data-translate', 'about-desc1');
+            document.querySelectorAll('#about p')[1].setAttribute('data-translate', 'about-desc2');
+            
+            // Features
+            document.querySelectorAll('.feature-card h3')[0].setAttribute('data-translate', 'feature1-title');
+            document.querySelectorAll('.feature-card p')[0].setAttribute('data-translate', 'feature1-desc');
+            document.querySelectorAll('.feature-card h3')[1].setAttribute('data-translate', 'feature2-title');
+            document.querySelectorAll('.feature-card p')[1].setAttribute('data-translate', 'feature2-desc');
+            document.querySelectorAll('.feature-card h3')[2].setAttribute('data-translate', 'feature3-title');
+            document.querySelectorAll('.feature-card p')[2].setAttribute('data-translate', 'feature3-desc');
+            
+            // Services section
+            document.querySelector('#classes .section-title').setAttribute('data-translate', 'services');
+            document.querySelector('#classes .section-subtitle').setAttribute('data-translate', 'services-subtitle');
+            document.querySelector('#classes p').setAttribute('data-translate', 'services-desc');
+            
+            // Continue adding data-translate attributes for other sections
+        });
+        
+        // Testimonial Slider
+        const testimonialTrack = document.getElementById('testimonialTrack');
+        const sliderPrev = document.getElementById('sliderPrev');
+        const sliderNext = document.getElementById('sliderNext');
+        const sliderDots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        
+        function goToSlide(slideIndex) {
+            testimonialTrack.style.transform = `translateX(-${slideIndex * 100}%)`;
+            
+            sliderDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === slideIndex);
+            });
+            
+            currentSlide = slideIndex;
+        }
+        
+        sliderPrev.addEventListener('click', () => {
+            currentSlide = (currentSlide === 0) ? sliderDots.length - 1 : currentSlide - 1;
+            goToSlide(currentSlide);
+        });
+        
+        sliderNext.addEventListener('click', () => {
+            currentSlide = (currentSlide === sliderDots.length - 1) ? 0 : currentSlide + 1;
+            goToSlide(currentSlide);
+        });
+        
+        sliderDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+        
+        // Auto slide
+        let slideInterval = setInterval(() => {
+            currentSlide = (currentSlide === sliderDots.length - 1) ? 0 : currentSlide + 1;
+            goToSlide(currentSlide);
+        }, 5000);
+        
+        document.querySelector('.testimonial-slider').addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        document.querySelector('.testimonial-slider').addEventListener('mouseleave', () => {
+            slideInterval = setInterval(() => {
+                currentSlide = (currentSlide === sliderDots.length - 1) ? 0 : currentSlide + 1;
+                goToSlide(currentSlide);
+            }, 5000);
+        });
+        
+        // Scroll Reveal Animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        window.addEventListener('scroll', revealOnScroll);
+        
+        // Add reveal classes to elements
+        const sections = document.querySelectorAll('section');
+        
+        sections.forEach(section => {
+            const h2 = section.querySelector('h2');
+            const p = section.querySelectorAll('p');
+            const cards = section.querySelectorAll('.feature-card, .class-card, .reason-card, .testimonial-card');
+            
+            if (h2) h2.classList.add('reveal');
+            
+            p.forEach((para, index) => {
+                para.classList.add('reveal');
+                para.style.transitionDelay = `${index * 0.1}s`;
+            });
+            
+            cards.forEach((card, index) => {
+                card.classList.add('reveal');
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+        
+        // Initial check to reveal elements in the viewport when the page loads
+        window.addEventListener('load', revealOnScroll);
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Contact Form
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            const name = this.elements['name'].value;
+            const email = this.elements['email'].value;
+            const phone = this.elements['phone'].value;
+            const service = this.elements['service'].value;
+            const message = this.elements['message'].value;
+            
+            if (!name || !email || !phone || !service || !message) {
+                alert('कृपया सभी आवश्यक फील्ड भरें');
+                return;
+            }
+            
+            // You can add AJAX request to send the form data to your server here
+            // For this example, we'll just show a success message
+            
+            alert('आपका संदेश सफलतापूर्वक भेजा गया है। हम जल्द ही आपसे संपर्क करेंगे।');
+            contactForm.reset();
+        });
+        
+        // Add Animation to Button
+        const animatedBtns = document.querySelectorAll('.animated-btn');
+        
+        animatedBtns.forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.classList.add('animate__animated', 'animate__pulse');
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.classList.remove('animate__animated', 'animate__pulse');
+            });
+        });
+        
+        // Add current year to copyright
+        const copyrightYear = document.querySelector('.copyright');
+        const currentYear = new Date().getFullYear();
+        copyrightYear.innerHTML = `&copy; ${currentYear} Made with ❤️ by Shriraj Patil`;
+    </script>
+</body>
+</html>
